@@ -53,13 +53,14 @@
         <h1><span class="minutes" id="minutes"></span> 分钟</h1>
         <h1><span class="seconds" id="seconds"></span> 秒</h1>
       </div>
-      <h1 class="love-typing">
-        我们，一周年啦🌹
+      <h1 class="love-typing" id="love-typing">
+        我们，<span id="anniversary-number"></span>周年啦🌹
       </h1>
       <h4 class="love-click" id="love-click">点我撒花🎉🎉🎉</h4>
     </div>
     
     <script>
+      var anniversaryNum = 0
       var isFireDoing = false
       var runFireWorks = function() {
         var duration = 15 * 1000;
@@ -132,6 +133,17 @@
       }
       var isAnniversaryTime = new Date().getMonth() + 1 == '11' && new Date().getDate() == '27'
       if(isAnniversaryTime) {
+
+        anniversaryNum = new Date().getFullYear() - 2022 - 1
+        var cnTimeList = ['一','二', '三', '四', '五', '六', '七', '八', '九', '十']
+        var cnChar = cnTimeList[anniversaryNum]
+
+        document.getElementById("anniversary-number").textContent = cnChar
+        document.getElementById("love-typing").style.display = "block"
+    
+        document.getElementById("love-typing").style.display = "block"
+        document.getElementById("love-click").style.display = "block"
+        
         runFireWorks()
         loveFire()
         var loveClick = document.getElementById("love-click")
@@ -144,6 +156,9 @@
             }
           }
         });
+      } else {
+        document.getElementById("love-typing").style.display = "none"
+        document.getElementById("love-click").style.display = "none"
       }
     </script>
     <script>
